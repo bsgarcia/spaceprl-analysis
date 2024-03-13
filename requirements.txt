@@ -1,0 +1,7 @@
+seaborn
+numpy
+matplotlib
+pandas
+statsmodels
+pybads
+scipy
