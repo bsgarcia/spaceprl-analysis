@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: pysankey2
+Version: 0.1.0
+Summary: Static sankey diagrams with matplotlib.
+Home-page: https://github.com/SZJShuffle/pySankey2
+Author: Zijie Shen
+Author-email: szjshuffle@foxmail.com
+License:  LGPL-3.0 License
+Description: # pySankey2
+        Static sankey diagrams with matplotlib. 
+        
+        
+        
+        ## Example1:Two-layer 
+        
+        Using a 2-layer demo `fruits.txt`:
+        
+        | From      | To        |
+        | --------- | --------- |
+        | blueberry | blueberry |
+        | apple     | blueberry |
+        | ...       | ...       |
+        | orange    | orange    |
+        
+        and with a simple code:
+        
+        ```
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        from pysankey2 import Sankey
+        
+        df = pd.read_csv("./pysankey2/test/data/fruits.txt",
+        				sep=" ",
+        				header=None,
+        				names=['From', 'To'])
+        sky = Sankey(df,colorMode="global")
+        fig,ax = sky.plot()
+        ```
+        
+        we get:
+        
+        ![fruits](./example/fruit_1.png)
+        
+        ## Example2:Multi-layer
+        
+        Using a 3-layer demo `countrys.txt`:
+        
+        | layer1  | layer2 | layer3 |
+        | ------- | ------ | ------ |
+        | China   | Canada | USA    |
+        | England | China  | Japan  |
+        | ...     | ...    | ...    |
+        | Senegal | Spain  | USA    |
+        
+        and with a simple code:
+        
+        ```
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        from pysankey2 import Sankey
+        
+        df  = pd.read_csv("./pysankey2/test/data/countrys.txt",sep="\t",header=None,names=['First', 'Mid','Last'])
+        sky = Sankey(df,colorMode="global")
+        fig,ax = sky.plot()
+        plt.show()
+        ```
+        
+        we get:
+        
+        ![countrys](./example/country_1.png)
+        
+        
+        
+        ## Contact
+        
+        Any  questions, bugs and suggestions are welcome, please feel free to contact:szjshuffle@foxmail.com
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Multimedia :: Graphics
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Description-Content-Type: text/markdown
