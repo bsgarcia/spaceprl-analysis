@@ -26,7 +26,7 @@ class Sankey:
     pySankey2 currently supports 2-layer and multi-layer Sankey diagram, where user can freely set the box position, strip length, etc.
     The returned matplotlib.figure and matplotlib.axes object allows post modification using matplotlib api.
     """
-    def __init__(self,dataFrame,layerLabels=None,colorDict=None,colorMode="global",stripColor="grey"):
+    def __init__(self,dataFrame,layerLabels=None,colorDict=None,colorMode="global",stripColor="grey", fontSize=10):
         """
         Parameters:
         -----------
@@ -92,6 +92,8 @@ class Sankey:
         self._labelCount = {'layer%d'%(i+1):
                         {x: y for x, y in self.dataFrame.loc[:,'layer%d'%(i+1)].value_counts().items()}
                           for i in range(dataFrame.shape[1])}
+
+        self._fontSize = fontSize
 
         # error("stop")
 
@@ -377,6 +379,13 @@ class Sankey:
                                     #edgecolor='black',
                                     **strip_kws
                                 )
+                        elif stripColor =="right":
+                             ax.fill_between(
+                                    np.linspace(x_start, x_end, len(ys_top)), ys_bottom, ys_top, alpha=0.4,
+                                    color=self.colorDict[rightLabel],
+                                    #edgecolor='black',
+                                    **strip_kws
+                                )
                         else:
                             ax.fill_between(
                                 np.linspace(x_start, x_end, len(ys_top)), ys_bottom, ys_top, alpha=0.4,
@@ -473,7 +482,7 @@ class Sankey:
                       self._layerPos,
                       self._layerLabels,
                       self._colorDict,
-                      fontSize = fontSize,
+                      fontSize = self._fontSize,
                       fontPos = (distToBoxLeft,distToBoxBottom),
                       box_kws = box_kws,
                       text_kws = text_kws)

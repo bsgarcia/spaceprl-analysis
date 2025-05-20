@@ -1,0 +1,22 @@
+# to test also
+
+* contrast between pairs and group
+* [X] check p(opt) corr with real parameters 
+* [X] check ff variance is correct estimated (SIM)->  check using code outside)
+* in slide add dynamic fit + confusion matrices
+
+# fit
+
+* [X] recovery of real parameters (instead of fake) for both absolute and absolute-var 
+* [X] estimate variance only on ff (and check if estimated variance is correct -> check using code outside)
+* refit with absolute-var and absolute fixed wv0
+* refit with likelihood_var = p * (1-p) (try with +?) [X]
+* tester xopt_absolute_var_fixed_wv (plot params+BIC+simu) -> still as before
+* if not working perhaps rerun fit as i'm not sure i saved the cell before running/refit with infinite param????
+
+ 
+# Why fit variance
+
+* no variance hypothesis
+* different  variance depending on dimension
+* variance 
